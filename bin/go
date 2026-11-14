@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+set -e
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+export GOPATH="$DIR/.gopath"
+export GOMODCACHE="${GOMODCACHE:-$GOPATH/pkg/mod}"
+export GOCACHE="$DIR/.gocache"
+export GOPROXY="${GOPROXY:-https://proxy.golang.org,direct}"
+export GOTOOLCHAIN="${GOTOOLCHAIN:-go1.27.3}"
+export CGO_ENABLED="${CGO_ENABLED:-0}"
+
+GO_BIN="$(command -v go || true)"
+if [ -z "$GO_BIN" ]; then
+	for candidate in \
+		"$GOMODCACHE"/golang.org/toolchain@v0.0.1-go1.27.3.*/bin/go \
+		"$HOME/go/pkg/mod"/golang.org/toolchain@v0.0.1-go1.27.3.*/bin/go \
+		/home/glancake/code/my-dfcf/.gopath/pkg/mod/golang.org/toolchain@v0.0.1-go1.27.3.*/bin/go \
+		/usr/local/go/bin/go \
+		/usr/lib/go/bin/go \
+		/opt/go/bin/go; do
+		if [ -x "$candidate" ]; then
+			GO_BIN="$candidate"
+			break
+		fi
+	done
+fi
+if [ -z "$GO_BIN" ]; then
+	echo "bin/go: no Go toolchain found; install Go 1.27.3 or later" >&2
+	exit 1
+fi
+exec "$GO_BIN" "$@"

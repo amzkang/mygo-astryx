@@ -1,0 +1,7 @@
+{
+  "name": "Astryx Gallery",
+  "identifier": "dev.mygo.astryx.gallery",
+  "version": "0.1.0",
+  "webview": false,
+  "out": "build"
+}
