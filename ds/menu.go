@@ -3,9 +3,9 @@ package ds
 import (
 	"fmt"
 
-	"github.com/egoist/mygo/ui"
 	"github.com/amzkang/mygo-astryx/icons"
 	"github.com/amzkang/mygo-astryx/theme"
+	"github.com/egoist/mygo/ui"
 )
 
 // MenuItemSpec describes a single entry inside DropdownMenu or ContextMenu.
@@ -20,6 +20,21 @@ type MenuItemSpec struct {
 	Danger    bool
 	Separator bool
 	OnClick   func()
+}
+
+// MoreMenu renders an icon-only overflow menu with an accessible trigger name.
+// MenuBase owns keyboard navigation, dismissal and focus restoration.
+func MoreMenu(c *ui.Context, open *bool, items []MenuItemSpec) ui.Element {
+	th := theme.Of(c)
+	m := ui.MenuBase(c, open)
+	m.Trigger.Size(th.Space(9), th.Space(9)).Radius(th.Radius.MD).
+		Label("More actions").Tooltip("More actions").Cursor(ui.CursorPointer)
+	applyInteractiveFill(m.Trigger, th.Colors.Surface, th.Colors.SurfaceHover, th.Colors.SurfacePressed)
+	m.Trigger.Children(func() {
+		ui.Icon(c, icons.MoreHorizontal).Size(18, 18).TextColor(th.Colors.Text)
+	})
+	renderMenuPopup(c, th, m, items)
+	return m.Trigger
 }
 
 // DropdownMenu renders a themed menu button built on ui.MenuBase.

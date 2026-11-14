@@ -5,9 +5,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/egoist/mygo/ui"
 	"github.com/amzkang/mygo-astryx/icons"
 	"github.com/amzkang/mygo-astryx/theme"
+	"github.com/egoist/mygo/ui"
 )
 
 // InputOpts configures TextInput.
@@ -489,12 +489,6 @@ func Progress(c *ui.Context, value float64, tone ...Tone) ui.Element {
 	return track
 }
 
-// Divider renders a subtle 1px hairline separator across its parent row or column.
-func Divider(c *ui.Context) ui.Element {
-	th := theme.Of(c)
-	return ui.Divider(c).Background(th.Colors.BorderSubtle)
-}
-
 // NumberInput renders a themed numeric field with increment/decrement support built on ui.NumberInput.
 func NumberInput(c *ui.Context, value *float64, lo, hi, step float64) ui.Element {
 	th := theme.Of(c)
@@ -550,4 +544,3 @@ func DateInput(c *ui.Context, date *time.Time) ui.Element {
 		Background(th.Colors.Surface).
 		Border(1, th.Colors.Border)
 }
-

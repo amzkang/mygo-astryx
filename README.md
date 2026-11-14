@@ -4,7 +4,7 @@ A pure-Go native UI design system, component library, multi-theme token engine, 
 
 ## Highlights
 
-- **61 Native Components (`ds/`)**: Zero-WebView GPU-rendered controls spanning layout, actions, forms, feedback, navigation, overlays, menus, and data display—built directly on MyGo primitives (`ui.ButtonBase`, `ui.MenuBase`, `ui.DialogBase`, `ui.TreeBase`, `ui.Table`, `ui.ToastViewportBase`, etc.).
+- **71 Native Components (`ds/`)**: Zero-WebView GPU-rendered controls spanning layout, actions, forms, feedback, navigation, overlays, menus, and data display—built directly on MyGo primitives (`ui.ButtonBase`, `ui.MenuBase`, `ui.DialogBase`, `ui.TreeBase`, `ui.Table`, `ui.ToastViewportBase`, etc.).
 - **Multi-Theme Token Engine (`theme/`)**: 7 built-in light + dark theme presets (`Neutral`, `Matcha`, `Stone`, `Butter`, `Chocolate`, `Gothic`, `Y2K`), OKLab color mixing, density scaling (`Compact`, `Comfortable`, `Spacious`), and programmatic WCAG contrast validation (`>=7:1` body text, `>=4.5:1` interactive foregrounds).
 - **56 Embedded Icons (`icons/`)**: Crisp 24x24 Lucide-style SVG icons compiled directly into the binary via `//go:embed`.
 - **Interactive Native Gallery (`cmd/gallery`)**: Live component catalog with interactive prop playground, real-time Go snippet generator, 7-theme WCAG contrast matrix, RTL/Dark/Density switching, and `Cmd+K` Command Palette.
@@ -16,7 +16,7 @@ A pure-Go native UI design system, component library, multi-theme token engine, 
 mygo-astryx/
 ├── theme/        # Design tokens, DefineTheme, 7 stock presets, WCAG contrast, WithTheme
 ├── icons/        # 56 embedded 24x24 SVG icons
-├── ds/           # 61 swizzle-safe exported UI components + embedded SourceFS
+├── ds/           # 71 swizzle-safe exported UI components + embedded SourceFS
 ├── registry/     # Structured component, token, preset, guide, and template metadata
 ├── cmd/astryx/   # Agent-ready CLI + MCP stdio server
 ├── cmd/gallery/  # Native desktop showcase & interactive playground
@@ -95,6 +95,9 @@ func main() {
 # Search components, tokens, presets, guides, templates, or icons
 ./bin/go run ./cmd/astryx search dropdown --kind component
 
+# Export the versioned offline capability manifest and pinned upstream parity map
+./bin/go run ./cmd/astryx manifest
+
 # Print compact token-efficient component docs for agents
 ./bin/go run ./cmd/astryx component AlertDialog --dense
 
@@ -131,6 +134,39 @@ When running `astryx mcp` (or configured via `.mcp.json` created by `astryx init
 3. **Semantic colors (`hardcoded-color-in-ui`)**: Read colors from `theme.Of(c)` rather than hardcoding `ui.RGB` / `ui.RGBA` / `ui.Hex` in UI packages.
 4. **Stable loop identity (`missing-key-in-loop`)**: Pass `c.Key(...)` when rendering stateful controls inside loops.
 5. **Swizzle-safe `ds/` imports**: Exported files in `ds/` only import stdlib, `github.com/egoist/mygo/ui`, `github.com/amzkang/mygo-astryx/theme`, and `github.com/amzkang/mygo-astryx/icons`.
+
+### Application layout and navigation
+
+The P1a components provide application shells, desktop and mobile navigation, five-region layouts, grids, aspect ratios, links, scrolling, and overflow menus. Run the gallery and open **Patterns** for eight interactive compositions. See the [delivery record](docs/astryx-delivery-plan.md#p1a-本地交付与验收) for supported behavior and remaining upstream variants.
+
+```go
+var shell ds.AppShellState
+
+func view(c *ui.Context) {
+    theme.WithTheme(c, theme.Matcha.Light, func() {
+        ds.AppShell(c, &shell, ds.AppShellSlots{
+            TopNav: func() {
+                ds.TopNav(c, ds.TopNavSlots{
+                    Heading: func() { ds.Heading(c, 2, "Workspace") },
+                })
+            },
+            SideNav: func() {
+                ds.SideNav(c, &shell.Nav, []ds.NavItem{
+                    {ID: "home", Label: "Home"},
+                    {ID: "settings", Label: "Settings"},
+                })
+            },
+            Content: func() { ds.Body(c, "Workspace content") },
+        })
+    }).Fill()
+}
+```
+
+## Development
+
+Start with [AGENTS.md](AGENTS.md) and [CONTRIBUTING.md](CONTRIBUTING.md) for repository rules, component acceptance criteria, and development workflows. See the [architecture guide](docs/architecture.md) for module boundaries and frame ownership, the [glossary](CONTEXT.md) for project terms, and the [roadmap](docs/astryx-parity-roadmap.md) for planned capabilities. Maintainer documentation is primarily in Chinese.
+
+`astryx manifest` emits schema version 1 with components, templates, tokens, presets, guides, icon metadata, and 354 parity assessments against a fixed Astryx commit. Existing `search --json` arrays and `component --json` objects retain their shapes. Each parity record states the assessed coverage, remaining work, reusable MyGo primitives, and evidence. The [delivery plan](docs/astryx-delivery-plan.md) records the next component interfaces and all 58 page milestones.
 
 ## Verification
 

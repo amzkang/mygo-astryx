@@ -2,9 +2,11 @@ package registry_test
 
 import (
 	"go/ast"
+	"go/build"
 	"go/parser"
 	"go/token"
 	"io/fs"
+	"sort"
 	"strings"
 	"testing"
 
@@ -30,10 +32,7 @@ func TestRegistryMatchesExportedDSComponents(t *testing.T) {
 		// Ensure swizzle-safe imports only.
 		for _, imp := range f.Imports {
 			p := strings.Trim(imp.Path.Value, `"`)
-			if strings.HasPrefix(p, "github.com/") &&
-				p != "github.com/egoist/mygo/ui" &&
-				p != "github.com/amzkang/mygo-astryx/theme" &&
-				p != "github.com/amzkang/mygo-astryx/icons" {
+			if !isSwizzleSafeImport(p) {
 				t.Errorf("%s imports disallowed package %q (breaks swizzle contract)", path, p)
 			}
 		}
@@ -53,6 +52,9 @@ func TestRegistryMatchesExportedDSComponents(t *testing.T) {
 	documented := map[string]bool{}
 	for _, c := range registry.Components {
 		documented[c.Name] = true
+		if !sort.StringsAreSorted(c.SourceFiles) {
+			t.Errorf("component %q source files are not sorted", c.Name)
+		}
 		if len(c.SourceFiles) == 0 {
 			t.Errorf("component %q has no SourceFiles", c.Name)
 		}
@@ -75,6 +77,42 @@ func TestRegistryMatchesExportedDSComponents(t *testing.T) {
 		if !exported[name] {
 			t.Errorf("registry.Components lists %s which is not an exported ds function", name)
 		}
+	}
+}
+
+func isSwizzleSafeImport(path string) bool {
+	switch path {
+	case "github.com/egoist/mygo/ui", "github.com/amzkang/mygo-astryx/theme", "github.com/amzkang/mygo-astryx/icons":
+		return true
+	}
+	pkg, err := build.Default.Import(path, "", build.FindOnly)
+	return err == nil && pkg.Goroot
+}
+
+func TestSwizzleSafeImports(t *testing.T) {
+	for _, tc := range []struct {
+		path string
+		want bool
+	}{
+		{"fmt", true},
+		{"embed", true},
+		{"image/color", true},
+		{"encoding/json", true},
+		{"github.com/egoist/mygo/ui", true},
+		{"github.com/amzkang/mygo-astryx/theme", true},
+		{"github.com/amzkang/mygo-astryx/icons", true},
+		{"github.com/amzkang/mygo-astryx/registry", false},
+		{"github.com/egoist/mygo", false},
+		{"golang.org/x/text/language", false},
+		{"example.com/widgets", false},
+		{"corp/widgets", false},
+		{"./helpers", false},
+	} {
+		t.Run(tc.path, func(t *testing.T) {
+			if got := isSwizzleSafeImport(tc.path); got != tc.want {
+				t.Fatalf("isSwizzleSafeImport(%q) = %v, want %v", tc.path, got, tc.want)
+			}
+		})
 	}
 }
 

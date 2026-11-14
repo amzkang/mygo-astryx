@@ -3,9 +3,9 @@ package registry
 import (
 	"fmt"
 
-	"github.com/egoist/mygo/ui"
 	"github.com/amzkang/mygo-astryx/icons"
 	"github.com/amzkang/mygo-astryx/theme"
+	"github.com/egoist/mygo/ui"
 )
 
 // Tokens documents all theme token paths in theme.Theme.
@@ -107,7 +107,8 @@ var Guides = []GuideDoc{
 2. Never block the UI thread: run I/O in goroutines and apply results on the main thread via Window.Update / Window.Invalidate.
 3. Scope themes per frame with theme.WithTheme(c, th, fn) and read tokens via theme.Of(c).
 4. Always key repeated/dynamic stateful controls with c.Key(...) before constructing them.
-5. Verify every change with: ./bin/go build ./... && ./bin/go vet ./... && ./bin/go tool mygo vet . && ./bin/go test ./...`,
+5. In this repository, run ./scripts/verify.sh after each batch of changes. It runs build, Go vet, MyGo vet, Astryx check, and all tests.
+6. In consuming projects, use the project's verification script. Otherwise run go build ./... && go vet ./... && go tool mygo vet . && go test -count=1 ./... using the project's Go wrapper when available.`,
 	},
 	{
 		Name:    "theming",
@@ -127,7 +128,22 @@ Use one of the 7 stock ThemeSets (Neutral, Matcha, Stone, Butter, Chocolate, Got
 		Tags:    []string{"swizzle", "eject", "cli"},
 		Body: `# Swizzle Guide
 Run 'astryx swizzle Button --out ./ui/ds --pkg ds' to eject a component's Go source files into your local project.
-Swizzle automatically pulls transitive internal helper files (such as options.go), rewrites the package declaration, and validates compilation.`,
+Swizzle copies the source files declared in the component's registry metadata, including its listed helpers, rewrites the package declaration, and formats the resulting Go source.
+After ejection, validate in the consuming project with its verification script, or run go build ./... && go vet ./... && go tool mygo vet . && go test -count=1 ./... using the project's Go wrapper when available.
+Repository tests compile and vet every registered component and the --all export in temporary modules.`,
+	},
+	{
+		Name:    "capabilities",
+		Title:   "Capability Manifest and Upstream Parity",
+		Summary: "Versioned offline inventory, fixed upstream source evidence, and explicit capability gaps.",
+		Tags:    []string{"manifest", "json", "parity", "agent"},
+		Body: `# 能力清单与上游差距
+运行 astryx manifest 输出 schemaVersion 为 1 的 JSON，包含已实现的组件、模板、token、预设、指南、图标元数据和 parity。
+baseline 固定上游 repository、commit、MyGo 版本和目录路径，parity 的 354 条记录覆盖 core、block 和 page 目录。
+每条记录包含 status、localRefs、primitives、reason 和 evidence。core 的 category 标明 component、support 或 internal。
+implemented 表示声明范围已覆盖，partial 说明可复用功能及剩余差距，missing 说明尚缺的交付物，deferred 说明恢复条件，notApplicable 说明排除理由。
+命令使用内嵌数据，可以离线运行。search --json 和 component --json 继续使用现有输出格式。
+源码维护时参考 docs/phase-0b-plan.md 和 docs/astryx-delivery-plan.md。`,
 	},
 }
 

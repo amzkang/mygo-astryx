@@ -1,8 +1,8 @@
 package ds
 
 import (
-	"github.com/egoist/mygo/ui"
 	"github.com/amzkang/mygo-astryx/theme"
+	"github.com/egoist/mygo/ui"
 )
 
 // VStack lays children out vertically with theme-scaled gap.
@@ -169,6 +169,12 @@ func SplitPane(c *ui.Context, size *float32, vertical bool, first, second func()
 	return ui.Split(c, size, first, second).Fill()
 }
 
+// Divider renders a subtle 1px hairline separator across its parent row or column.
+func Divider(c *ui.Context) ui.Element {
+	th := theme.Of(c)
+	return ui.Divider(c).Background(th.Colors.BorderSubtle)
+}
+
 // Toolbar renders a horizontal action bar with subtle surface background and bottom border.
 func Toolbar(c *ui.Context, fn func()) ui.Element {
 	th := theme.Of(c)
@@ -181,4 +187,3 @@ func Toolbar(c *ui.Context, fn func()) ui.Element {
 		Background(th.Colors.SurfaceSubtle).
 		Border(1, th.Colors.BorderSubtle)
 }
-

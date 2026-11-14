@@ -1,0 +1,1781 @@
+{
+  "repository": "meta/astryx",
+  "commit": "e364afc958609c990d42514b8927a6ef54b86b00",
+  "paths": {
+    "core": "packages/core/src",
+    "block": "packages/cli/assets/templates/blocks/components",
+    "page": "packages/cli/assets/templates/pages"
+  },
+  "entries": [
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/AlertDialog",
+      "treeSHA": "af15a53034d9cc5ff101eb7ffeaf7a5d1643ad9b"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/AppShell",
+      "treeSHA": "d6658f817cee5eb771bd45e73424a85cd1843e6e"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/AspectRatio",
+      "treeSHA": "cf5b5a7a73f6aef0ba9aad5dc2c6c1d819f56545"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Avatar",
+      "treeSHA": "500855edcd15be0e4ae1d03186995b0b95914524"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/AvatarGroup",
+      "treeSHA": "68c99bede4a89b68c5b566748f007d9389d88b7d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/AvatarGroupOverflow",
+      "treeSHA": "72e2e461c838f8f09a6fb8a9d115f55e05aeb985"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/AvatarStatusDot",
+      "treeSHA": "ccbe44b630c9fed550e32f954368378743ec2271"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Badge",
+      "treeSHA": "d20f7752a3285e21f1e9b08a1cf6ff9d9b9fefb0"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Banner",
+      "treeSHA": "1cf1e9fcb9e1be9e224e3088bf62368bc78caf37"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/BaseTypeahead",
+      "treeSHA": "20e2bef82d62528991f035aeb7fc648606a703ad"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Blockquote",
+      "treeSHA": "7dbd501cd22ffeb47d3f90cf5898de4c04034018"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/BottomSheet",
+      "treeSHA": "ef6c5780552049a560cea025b1ac3cdb2b603e74"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/BreadcrumbItem",
+      "treeSHA": "b6becdb773a0a904ffe46ec98d9c8467051bce99"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Breadcrumbs",
+      "treeSHA": "68483196497ec494aa937f0b701b7d714877a12d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Button",
+      "treeSHA": "c730bb071d5ab94f9a643d6a232845260ccda47d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ButtonGroup",
+      "treeSHA": "ae2e8609185751bb1e3b0714be2cf820f9147211"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Calendar",
+      "treeSHA": "4f374d67fcadc746d2b457e1db1bb039c973493d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Card",
+      "treeSHA": "16bb26a5a768038e1581cb82ee621425a32136c8"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Carousel",
+      "treeSHA": "8ce866135b0766048459be0c2b52b60a3ba00d20"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Center",
+      "treeSHA": "ae4ff04c0252ffb9e942873c610d0314ae5f4a4f"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatComposer",
+      "treeSHA": "07609b9f009cf58b6da6a6ffe419acfc6247eefc"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatComposerDrawer",
+      "treeSHA": "0410697b56438d67b00ec8972c4c82cdb76b8b49"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatComposerInput",
+      "treeSHA": "03b23917e1aa2cd59b64acf912620a2aae3c33c5"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatDictation",
+      "treeSHA": "a35ca7fa408aee81a8ef46f355c4d7bdc06e79a2"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatDictationButton",
+      "treeSHA": "5f1c2f967f6f7f3f270d86ac75f4fb10a4741149"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatLayout",
+      "treeSHA": "fab810734bf022c33247c4b2449fa65521e00d19"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatLayoutScrollButton",
+      "treeSHA": "6aa894510bfdd1829d3b7ca529ddae38684cfe64"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatMessage",
+      "treeSHA": "65e626c82480eae8af094a44efc3e5ff37bb6337"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatMessageBubble",
+      "treeSHA": "48acff356a2a51d3f244418be22e07cecbd16cdd"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatMessageList",
+      "treeSHA": "04b851377f1976e1f15510a56b467143632b519d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatMessageMetadata",
+      "treeSHA": "47818707b05283d1e633e3666490089e9c8814c6"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatSendButton",
+      "treeSHA": "fa4748dde76c5702dc89f62f1dbb7f4a220485dc"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatSystemMessage",
+      "treeSHA": "762cd760a888c253cda05a944d90570f6b1b17e4"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatTokenizedText",
+      "treeSHA": "4d0375859c2034dc314f8ebe7ae603a6f7793b73"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ChatToolCalls",
+      "treeSHA": "2b40c52a069a7dbfc0034af303c8f538cd7b920d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CheckboxInput",
+      "treeSHA": "03e28ec05faf8a7ff945beb993f3a64a86581a7c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CheckboxList",
+      "treeSHA": "c2ac2ec37bc434a4768eb028ee84da0cb350974a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CheckboxListItem",
+      "treeSHA": "f4ab64a79ddb286bfe5871640203891078bc66e7"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Citation",
+      "treeSHA": "e4e887ca95bb0d0cbf1dcc8d81464fb720863515"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Code",
+      "treeSHA": "767ffb20d9cfcc8010c81e14524f1041c6df7665"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CodeBlock",
+      "treeSHA": "7b4191a8f04a8d6a1bcb7d02946fb941ce0554e3"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Collapsible",
+      "treeSHA": "8c32542644de72711b734e3d8a8daa9e41757f26"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CollapsibleGroup",
+      "treeSHA": "75f9a9086ce150005d7cae1e8a02b0ed8afe19ea"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CommandPalette",
+      "treeSHA": "b52af21afa5491c567ea67ac2f6d8b791b4da2f1"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CommandPaletteEmpty",
+      "treeSHA": "86a8ba5748e53051942bee6e565119b8209c30a4"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CommandPaletteFooter",
+      "treeSHA": "426ef7dad816803d9b5e6a2259b04b73bef60d6b"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CommandPaletteGroup",
+      "treeSHA": "bd5d74e5b0b6b3215feaad8e0d089496ee22350f"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CommandPaletteInput",
+      "treeSHA": "2744177a867db444166279763182813b65d03ed9"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CommandPaletteItem",
+      "treeSHA": "c5ad2e4893e4e45e9a2959682808f342d23e3d6e"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/CommandPaletteList",
+      "treeSHA": "de73b6df20d7eed8e050aa329383ed2aef3cba4c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ComplexSelector",
+      "treeSHA": "b93d550db2eca9f61f3ff9f3f46f372b906fd30c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ContextMenu",
+      "treeSHA": "ba8be220a99825196165d5f3bfadb569697e6e3f"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ContextMenuItem",
+      "treeSHA": "82b3656c2f2971bd75f1fdd69101f08d902c43f1"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/createAnimator",
+      "treeSHA": "f5a34997cdd777e95e939f2298433575323fa229"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/createDragToSnapPoints",
+      "treeSHA": "a14dde07b14e70657106b492063748ec434546df"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DateInput",
+      "treeSHA": "a480988461f09aae317a875f5e8d60c4a69c7096"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DateRangeInput",
+      "treeSHA": "d5d482af55b33da384de9238b14aa982aa483c2c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DateTimeInput",
+      "treeSHA": "46328012b73e495613982d6619fa82bd3352a95a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Dialog",
+      "treeSHA": "98d6d265f3ad3b9592cd63512fb3c48e0d282fff"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DialogHeader",
+      "treeSHA": "88e082965ba7716aa49975276efb2941dfb1d4bc"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Divider",
+      "treeSHA": "d2f5131bee529389fedfc8bf3c01bc93facf46eb"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Drawer",
+      "treeSHA": "9ecefec6afe97a7d96fc5c910ec836b228ada906"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DrawerHeader",
+      "treeSHA": "5e20c850c0054656e6658bf7542d4a91426bafdd"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DropdownMenu",
+      "treeSHA": "217405f8faa173c4c55e935a98cd8934ab4b3576"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DropdownMenuGroup",
+      "treeSHA": "b70fb8c9552df14b98ef20c3f7140235a64733bd"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/DropdownMenuItem",
+      "treeSHA": "1d77ec208509a4be554155831d970394b4ce5b01"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/EmptyState",
+      "treeSHA": "0fb666e0d0a38c772cbabfc18db058f67db0fa7b"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Field",
+      "treeSHA": "5952834462543b10363614d6cbde264e1814e43c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/FieldLabel",
+      "treeSHA": "97b505153058e26d04b869d1de7dbe1ca07e23cb"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/FieldStatus",
+      "treeSHA": "b1dce4ade41323a9f0109949f2aff1906373ae51"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/FileInput",
+      "treeSHA": "30cddf2073226af0376bd40d534392ef3d6d19b9"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/FormLayout",
+      "treeSHA": "fa76f4c8d856ad535473610cce05eec5ea1b62d0"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Grid",
+      "treeSHA": "6b7720dbea5aab1cc2b1791924cecbc0a2a7c02c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/GridSpan",
+      "treeSHA": "d6db5626f309eed20b5dd1027615c528892a606b"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Heading",
+      "treeSHA": "aff020b98cfa34e802ff03908bb50cca1db91050"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Hooks",
+      "treeSHA": "0582ac0bbcfdb7b112f83881e09a3cc8b5d83880"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/HoverCard",
+      "treeSHA": "489caf02dad81b78adeb831b3a499e658e5aa735"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/HStack",
+      "treeSHA": "e2db642642670936587a1e3e6f96a53a18db0465"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Icon",
+      "treeSHA": "1b89cb84327fe0d4ebe2d5e3399f9ba0c8203f08"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/IconButton",
+      "treeSHA": "30c10683b4dbc25dea949f2e7c7aed5a9ea80996"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/InfoTip",
+      "treeSHA": "1cdd9bd26773980d1e672c1c234024223b0d24ad"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/InputGroup",
+      "treeSHA": "2ebee9b2a8bddfb5d0645e38c16d3ebb27a482a6"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/InternationalizationProvider",
+      "treeSHA": "849532abb21df0d1fb7bcccf0df2ebab02c6a497"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Item",
+      "treeSHA": "b1cd3a8b8a56bd9d282a24a4f952700e9a82d6fd"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Kbd",
+      "treeSHA": "b721e951dd1b98bc3ac3459e0da2f8ae0f4c0521"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Layer",
+      "treeSHA": "2b1b06190a325b4e7b1109f7548483ff0574cb21"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Layout",
+      "treeSHA": "b42cd5253725bf5174e381732f2810cf65d92886"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/LayoutContent",
+      "treeSHA": "a936094917c60ae85bf7b2d290cb67be2eb3e287"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/LayoutFooter",
+      "treeSHA": "cb75dfa8aa3797ba69111ba01769886637c573b0"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/LayoutHeader",
+      "treeSHA": "8a66c80eb15f9cba634465c32794706a15d68f5e"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/LayoutPanel",
+      "treeSHA": "01d7f4703e18224b9a095ff2ea344a6b318c79b3"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Lightbox",
+      "treeSHA": "3ce7f32ada2d248cad4ade96fe26ee383b85a438"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Link",
+      "treeSHA": "4c55f1b97bf19801ec5c56ca3d5b787543dc02ed"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/LinkProvider",
+      "treeSHA": "455ba2c058674e142e34bc0f74f28b366410bc3c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/List",
+      "treeSHA": "b1259e30f337cd1efb013573b5d4d6932da6cd5d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ListItem",
+      "treeSHA": "b5fbe199a32d3015ee05e32ef0beac1f25a7ebcf"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Markdown",
+      "treeSHA": "6bdb4dd0569f9fddaf3ed22a95ab7cffaa84696e"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/MediaTheme",
+      "treeSHA": "adaf3a1c5bb8b8ca351cfca434ea586794fca231"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/MetadataList",
+      "treeSHA": "5ce960fd8d0d010bd4272973360b57f81da60fe1"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/MetadataListItem",
+      "treeSHA": "2bf48eb144dc0056b94fe17840aee02a5659cd36"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/MobileNav",
+      "treeSHA": "6298deea29dacc2201cc55f5885a387649473048"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/MobileNavToggle",
+      "treeSHA": "172faed4369c30f322da83f13a8f11a6c18c631d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/MoreMenu",
+      "treeSHA": "dbafdc8e4e2a1b333af6d0154f17f37518eca0d9"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/MultiSelector",
+      "treeSHA": "ab8fbf4596f2665fe1e565ec1c497b78b7922522"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/NavHeadingMenu",
+      "treeSHA": "61b469575d8204269ce6aa1e27d2aca45a092d5d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/NavIcon",
+      "treeSHA": "fee0ac340b6050d14952a024b46c6af4ee55239f"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/NumberInput",
+      "treeSHA": "8bd2438a2d241cd1bec229098261965ae2ab6616"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Outline",
+      "treeSHA": "570ec401ed1eed0c639bd5db3f1b652e57f2626b"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/OverflowList",
+      "treeSHA": "d8fbe0cb2d32bc4535d266525a8cd0f443f5d31b"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Overlay",
+      "treeSHA": "a03fb09264cb7ad18768f82ef104557af200e281"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Pagination",
+      "treeSHA": "2942604cbfa8e8ceea8be500920f1d48332bcdb3"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Popover",
+      "treeSHA": "a295a2903ef46b71a33b6273690e25059df952f8"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/PowerSearch",
+      "treeSHA": "8fb593f09cc85154e23657dd00a26fa2306eddb1"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ProgressBar",
+      "treeSHA": "ce6f724b9a4574f59b9aacf84ef3f0063b70c756"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/RadioList",
+      "treeSHA": "146f526c61dc012fc46bf936c2c16ad9f747cffb"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/RadioListItem",
+      "treeSHA": "3224d2877832ff609cff4724574e1a251e33b678"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Resizable",
+      "treeSHA": "b1ff73aa6305bab02e5c6b983f7d6b027d2f2165"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ScrollableArea",
+      "treeSHA": "b33c3139095adbed86a49595824d9982bf25ddeb"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Section",
+      "treeSHA": "0af341dec46b9d333f3bfc8008c3f39f1b72b0f0"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SegmentedControl",
+      "treeSHA": "14699a32607f52f166d3320177dc451efb4219d9"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SegmentedControlItem",
+      "treeSHA": "230cdf2863be87a19322a78aa5d8dafcefa547db"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Selector",
+      "treeSHA": "ddfc920b64de169e68bcdb8c28e7582e2e143746"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SelectorOption",
+      "treeSHA": "3a57fc8b97db22bdbd2ee60308cd5070923a0e3a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SideNav",
+      "treeSHA": "f1958c90dd18d4d763d9dc653611326245a0506b"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SideNavCollapseButton",
+      "treeSHA": "f575f839abfb67e8b37732729e5c892d0cfe7f8a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SideNavHeading",
+      "treeSHA": "69552e5a4f9fb8ce662f58c010df273d8b57ced2"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SideNavItem",
+      "treeSHA": "ed50d272ba2b48180973e2ac0c93c922706bae5e"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SideNavSection",
+      "treeSHA": "e70e1320559d5b5e8ed8e9ffeecb9e56184c5471"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Skeleton",
+      "treeSHA": "a6d1a29525f50c9b2442104506fe6bd7640662a6"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Slider",
+      "treeSHA": "422849892321b550d29f7e93885413d8ca2302e0"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Spinner",
+      "treeSHA": "707ca23210365a0ae1939f25107d7186659bd012"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Stack",
+      "treeSHA": "72907f75e319fda67d01ef8efca62222543da171"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/StackItem",
+      "treeSHA": "af9fa4988d8ab177e99e1cb25367a99024c9d325"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/StatusDot",
+      "treeSHA": "bc5e5017c63672d30fbf99144f0dd62bd05ae320"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Step",
+      "treeSHA": "1616a3e0b9a6f28441bbaed09d956148684d0d35"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Stepper",
+      "treeSHA": "dead84cd68cca6a13bd98b3bebf7935d0dc40551"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Switch",
+      "treeSHA": "d2338f76ff88ebbde1d2b0ee591d8ccbde6d09e8"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/SyntaxTheme",
+      "treeSHA": "d72a7d9bed3a32c3ecb3fe008a7b97a9a9d3dce0"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Tab",
+      "treeSHA": "7f1cc839e859280f41e853a89e884c68551a7aff"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Table",
+      "treeSHA": "b7223d7dc0095d3426a4589a2f4921f71091632c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TabList",
+      "treeSHA": "a9633fe2f9c347ad36c7529d5ba6a67aa15a0bb6"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TabMenu",
+      "treeSHA": "8870572eb4db4feddadece16324e69fcde468940"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Text",
+      "treeSHA": "9f768d659f96bdd8ab97903c24e445cdbda16b0a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TextArea",
+      "treeSHA": "6ae58031c079e0c75aa484aae188ee39eb647779"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TextInput",
+      "treeSHA": "812ccb7eb2eaff2066b8bcfaec87eaba3a6582aa"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Theme",
+      "treeSHA": "fe5c42e6f20c2afae00e30b1d0ce0cad0156e7fb"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Thumbnail",
+      "treeSHA": "f095b746e4ae0f2a24af5943049461c824f0ed1a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TimeInput",
+      "treeSHA": "f3495964e743c93bc91ee362f19af2ef3680bd27"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Timer",
+      "treeSHA": "c0eab8623be8ceb7941673b66cd631f73c9cd2fe"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Timestamp",
+      "treeSHA": "e746473d0f2eb6c51551f1ba7227d8b5d1a38b66"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Toast",
+      "treeSHA": "871b3f0f9810fd6cf4df5e2cf110a98714989246"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ToggleButton",
+      "treeSHA": "72a599d88b1e538d1754fefee054a9c85d308cb3"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/ToggleButtonGroup",
+      "treeSHA": "8505e03ff10ba3cd54c6cbe8f1d98de1d2343126"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Token",
+      "treeSHA": "5f66ad69986a2f45eba3a2a8510bba2ba32380a3"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Tokenizer",
+      "treeSHA": "4dcce3a10901329265a75c079456f990b4386dc4"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Toolbar",
+      "treeSHA": "b1619ed6dc796d5931939f5c0da56138be4922b7"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Tooltip",
+      "treeSHA": "71813cf9576cd8f058b2baa31a4dd39fbe939f0d"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TopNav",
+      "treeSHA": "eeb289f0dce14169cd8177a673e9baee662d0c75"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TopNavHeading",
+      "treeSHA": "9b581cc404fdf0c6373383599f1f7603292d48c7"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TopNavItem",
+      "treeSHA": "8d5b88220a728920901ee8419a9f264d1afc8b4a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TopNavMegaMenu",
+      "treeSHA": "0dd5fd2bfeb8ef508f12b456560d7cf851cd7ff7"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TopNavMegaMenuFeaturedCard",
+      "treeSHA": "807e9d21cceb0dcceb25ccfc50f521a58babc474"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TopNavMegaMenuItem",
+      "treeSHA": "cbd19c27c16285d67e55c3338d9cd8d16ed66626"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TopNavMenu",
+      "treeSHA": "c384596a0e435c6a41ce02cfe57620b5c9ebae41"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TreeList",
+      "treeSHA": "aece0c982ff15c2579d81d24a0340208fc8aa848"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/Typeahead",
+      "treeSHA": "2a275971e313b3daa3f4c4c6bba31a1e450a030a"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/TypeaheadItem",
+      "treeSHA": "4df18ab4bae17e7a65be849d882d46e9bac8bd7f"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/useAnimator",
+      "treeSHA": "4b8972b7ce9744c8ac5cfb6aaca5136051dcfc74"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/useDragToSnapPoints",
+      "treeSHA": "1aa0ce749c58fbebd0cadee6a92cf82ff2d31ac7"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/usePanGesture",
+      "treeSHA": "76de9144ee883097b6de8d3ec7087ef40ec901c1"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/VisuallyHidden",
+      "treeSHA": "05327c2f24a4ac45ca6de6ba4c06ea42e973134c"
+    },
+    {
+      "kind": "block",
+      "sourcePath": "packages/cli/assets/templates/blocks/components/VStack",
+      "treeSHA": "7da57e594272e9fc351cf71721b83f7f09cc302f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/__tests__",
+      "treeSHA": "4698d39f61d96b6c9c02d2d28243e662bbe2a483"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/AlertDialog",
+      "treeSHA": "9657ee4fac1171d47cf5d0ba8669a073a1fca9d5"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/animator",
+      "treeSHA": "a9f060081e3417867dfc9684723d1cabe98dadff"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/AppShell",
+      "treeSHA": "7e2616a487d2df705bfd1f64fdcc461681ab8648"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/AspectRatio",
+      "treeSHA": "56f04415c1eb62340a072bb16b3bf1f1db23267c"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Avatar",
+      "treeSHA": "fa38d122032b9454670fc47a7faf8360e71a73e8"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/AvatarGroup",
+      "treeSHA": "ce8a6edbd9dfae5f0e51565814d85021561b4e84"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Badge",
+      "treeSHA": "f21d0bc195977cb6db8ad0b9a3f9d5e9d7c918cc"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Banner",
+      "treeSHA": "b69f1b2210f9295b478180a667dd02420a4dcfdf"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Blockquote",
+      "treeSHA": "87f8448208b02fb700c11a5410bf6530ab6a4b12"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/BottomSheet",
+      "treeSHA": "7b69f4bc0e4703765eea3bfef7c9cb65605f0bda"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Breadcrumbs",
+      "treeSHA": "b9b64550d7225d1a3b3aafa378f10a50d94352ce"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Button",
+      "treeSHA": "bdb2f64e61806367daca73e4462eaf4537b6ec8e"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/ButtonGroup",
+      "treeSHA": "79145c1dd3072805d12851cd8364026bb621a2db"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Calendar",
+      "treeSHA": "d6dddf3c6fd0fff18e456bf6abf82c496e411a14"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Card",
+      "treeSHA": "d4ae9ebd6483bff7c8aedbbf84f41bf04f75ee74"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Carousel",
+      "treeSHA": "e3e63d4676382d7da399f3a1a01b87a095f31115"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Center",
+      "treeSHA": "8437a121cb0c71d4936b30eb96bae85fce749747"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Chat",
+      "treeSHA": "3f464748f3c14e1b02e9ac2b54b0cca89d3f8b81"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/CheckboxInput",
+      "treeSHA": "fb4169de5a6408d7e26db3a3309fc42f92b5a223"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/CheckboxList",
+      "treeSHA": "eb0f6fe0b98db5ff490fc7fc83787a0488661cb9"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Citation",
+      "treeSHA": "dd9b0ea48df7d68993e78855370b6791d06cd5a9"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/ClickableCard",
+      "treeSHA": "53a85ab99d5fec5c6a181445e0b3899f8ab4c609"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Code",
+      "treeSHA": "0875c4e06f7e6ecbf52161cb4a2daa38af1c05db"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/CodeBlock",
+      "treeSHA": "d17c04126adc491e429c2c0aa6d6187a5b88ab2c"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Collapsible",
+      "treeSHA": "13aa3154f46a684cd4230b424f6954ad999047d2"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/CommandPalette",
+      "treeSHA": "04ecbbb726de73721f2651a458bfbb476d29ab87"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/ComplexSelector",
+      "treeSHA": "bbccb80b3ea226e4ecd8a36aee27b9003d3bb8bc"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/ContextMenu",
+      "treeSHA": "f72f89404b32f7aee5b9444f6c8dd0a5063aaa43"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/DateInput",
+      "treeSHA": "e50979449227602ab938307ec31f5a76ef14909d"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/DateRangeInput",
+      "treeSHA": "f53856b6ddfb67f104d082f1fde978fe161e6e43"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/DateTimeInput",
+      "treeSHA": "c1a60672b8a43e066c5cc414a8052a8f5228a020"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Dialog",
+      "treeSHA": "40aaf643ff373f4c1daf047d7859251ae717d3a6"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Divider",
+      "treeSHA": "087d1e491d7f9c727cf40cce12720d03cda636dd"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/dragToSnapPoints",
+      "treeSHA": "b8933cc67bb89f4ee51bb9c4d6b87268ab083461"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Drawer",
+      "treeSHA": "27f1e85bd88a1e2842c0b905b840fb602a984612"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/DropdownMenu",
+      "treeSHA": "82dbe0df43da666449869b0e06608c30f0fbe9d9"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/EmptyState",
+      "treeSHA": "dc4566f9368f911b5a6f673d22a2eff6acd78ed1"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Field",
+      "treeSHA": "d67c615bc9be4b8be0ec40e522c7521363477442"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/FieldStatus",
+      "treeSHA": "ec5cb27a809589701bf18eeccc924081f0240488"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/FileInput",
+      "treeSHA": "5ded65b4f99b765e3042eb780f8e18f1da8b564f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/FormLayout",
+      "treeSHA": "d7e1fe6b12f24711d91631d238e24f37f35d644b"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/gestures",
+      "treeSHA": "69ac35e447feaa1c13dad6df2c8c905c337f62ac"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Grid",
+      "treeSHA": "f4061045be0c53e52fee670a668b2a3fa1cb7926"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Heading",
+      "treeSHA": "c51d52ce6a12ab482d0ed18ab9f89564594ae39f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/hooks",
+      "treeSHA": "8c13ffea83fcf51f6ca6a9e1bab80a330dd1cf6d"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/HoverCard",
+      "treeSHA": "54b07cf8881702d585451a089f9afeb6464d2203"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/HStack",
+      "treeSHA": "ee11ba50d03abaded5576e2869a7bff5792bbdde"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/i18n",
+      "treeSHA": "5e641cdbaf47f678149141c67bc48fa944c11d13"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Icon",
+      "treeSHA": "654cb988c2f6cd685da65180e992435526dcf94d"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/IconButton",
+      "treeSHA": "97e786d7030488b6388ac16518fd5ce932391c5e"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Indicator",
+      "treeSHA": "be23b643e901ecd7733a8ba2c5590e7de81210da"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/InfoTip",
+      "treeSHA": "5e79ed1017124dafc6473accc7da21ca041009a0"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/InputGroup",
+      "treeSHA": "b9fb7b88cf359f2863d3a2bb07be39e327f3e69a"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/InteractiveRoleContext",
+      "treeSHA": "3475f3c362aec45d0e10ebf8bb7aba679a89eb14"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/internal",
+      "treeSHA": "7a249294ff8799d1120182373c422f356d8d7561"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Item",
+      "treeSHA": "e1ac3935028309d94fdf70c326c0beb5ac07aa7c"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Kbd",
+      "treeSHA": "1ef63b8c988856eb6410c10864b70d2b78cdba26"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/keyboard",
+      "treeSHA": "2305c97433b1a18319f9bb63dbc729f6c05dcd2a"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Layer",
+      "treeSHA": "37ffd1c594d0d369c13c6af8e385696bef9146ed"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Layout",
+      "treeSHA": "92e8f3b56adf8f0fa289218cdf52d98a227dd553"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Lightbox",
+      "treeSHA": "51ab8b056502b7c0dc278abb732f587e641f8287"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Link",
+      "treeSHA": "cd158d7cb4c9752f359ef6233f116942089279a5"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/List",
+      "treeSHA": "2baec80f18db91c35613ea609da51c3dc88584f4"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Markdown",
+      "treeSHA": "878ff70654c0b748af6b4ad151b8289a6bac2e4f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/MetadataList",
+      "treeSHA": "d5fa52756409492eccf01aa2162e2a66f4ec0651"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/MobileNav",
+      "treeSHA": "13d0292c25ca3c26d244f1da84ffa27ffa418cee"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/MoreMenu",
+      "treeSHA": "d5535813d6f8d4474b8fdbb0416eee6fded9407e"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/motion",
+      "treeSHA": "2e45c92ced175cb267986ffe52ca571999662fb7"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/MultiSelector",
+      "treeSHA": "6b43208572c104ed24a093baa0ac739d890a65d4"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/NavIcon",
+      "treeSHA": "89166e8ce076a816a267ddc7e6837f9988dd65c6"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/NavItem",
+      "treeSHA": "19fb0ec6670da66f7af29fd9e5428c3829d077fd"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/NavMenu",
+      "treeSHA": "6b081013f5f6177d619118d03f9aeb483721f5c0"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/NumberInput",
+      "treeSHA": "838e94769f2b56bf654e53ed63504d1231db7327"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Outline",
+      "treeSHA": "9e06937588a0acf73d87ddae28f789835ddfd770"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/OverflowList",
+      "treeSHA": "6651e7ba800374e2dad608f81e2ecda70f47ef2d"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Overlay",
+      "treeSHA": "44e65f039f756a4e449483798e2b3b323c60a708"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Pagination",
+      "treeSHA": "bcd4b4aa2abd1c974c1292990ddcfb9c3f504e6f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Popover",
+      "treeSHA": "eece0627def539fdaafee12c21755a3c036b2e68"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/PowerSearch",
+      "treeSHA": "12a2b34eb8ce7345cdee325a1f1d4a42f5d32b9d"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/privateAttributes",
+      "treeSHA": "a8914c3856c374a39fae45f8cce984e0db25b288"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/ProgressBar",
+      "treeSHA": "904e9871314f9698421afc30f74a33a396304389"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/RadioList",
+      "treeSHA": "806cb4469faac55f627cb58965762f97ec6cbb8b"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/reorderable",
+      "treeSHA": "eb2183ca28cba2281f2b97a4016c78ae55090da8"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Resizable",
+      "treeSHA": "b9e8026f3740d7697d3e5800db273e476e5fd425"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/ScrollableArea",
+      "treeSHA": "101ab7fada64d0a63110211d345ae56c6c568079"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Section",
+      "treeSHA": "c51a9fd11e992efe6cb4607a756ec62d39243f40"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/SegmentedControl",
+      "treeSHA": "03858095c2df74fce5339fd28138637f80480d86"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/SelectableCard",
+      "treeSHA": "a0dbaeda47d570d22dcbb02c2c107fca2fc27f15"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Selector",
+      "treeSHA": "2208d9168da8db399bb3d86b300b60e1724d4c04"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/SideNav",
+      "treeSHA": "cdc940dbf24d3679b8ca30f010915a8f71805705"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/SizeContext",
+      "treeSHA": "03bedcc745e12be2e11771551defd805f5ee7a4b"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Skeleton",
+      "treeSHA": "2d229ce20a419604ca237a10cbeeb8893e59c12a"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Slider",
+      "treeSHA": "abab0deae6b163f64bb3bb510f89e73419486170"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/SnapPaging",
+      "treeSHA": "5a4a4512ef1f67c0d1ddb7b7658b8f72d1de3fb8"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Spinner",
+      "treeSHA": "8935930a3f5da84a31148d150c68243076f81ccc"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Stack",
+      "treeSHA": "a12fe59da4baa5ecbc1f2f34920eac8bb51fde8f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/StatusDot",
+      "treeSHA": "487c5de205e913f710113e05a1de4f68625a1725"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Stepper",
+      "treeSHA": "7af42cfdc0f3414ade6e435f3bb57a6f111d9f26"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Swipe",
+      "treeSHA": "fbcf4af4f710098057710735b4c8a714d0ff8947"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Switch",
+      "treeSHA": "724350e63fb9f342572a2ab6f9d4455be70bab2d"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Table",
+      "treeSHA": "6c670f93dc9e0026fc23dccdf6b0f645abdcb0ff"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/TabList",
+      "treeSHA": "6195ac60a791f13498a05ba0b6fd715cd82eaa02"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Text",
+      "treeSHA": "6c9394648e2c2330e4b20dca4bde123c6d05b70a"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/TextArea",
+      "treeSHA": "ef03ee7afaadf13d119357940043ddfa255ae068"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/TextInput",
+      "treeSHA": "0428f496ae8f0a55bab469f8fe37a86f59ce7390"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/theme",
+      "treeSHA": "5a3a1c8537b6a82833a5f972859c1f5540f12069"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Thumbnail",
+      "treeSHA": "36bc0f5d932bfa07967c9dc170bd32d5a919a046"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/TimeInput",
+      "treeSHA": "3ccf181589f760d0029c22189c07baaae5b58c0f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Timer",
+      "treeSHA": "3c2605b079c49755c0bf7a4579a6fb0b5654a7e7"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Timestamp",
+      "treeSHA": "fc741fd4f4537620d2d9a03fefac3b434e4afb6a"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Toast",
+      "treeSHA": "d0d0f3b5d36ceb97ce8a1c7b918abfa225340a15"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/ToggleButton",
+      "treeSHA": "b2e05c891f28a84e5c24f9d3806b1b479e34a9b4"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Token",
+      "treeSHA": "dfd4e60a956f8a5d457b35587e491112998f00f7"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Tokenizer",
+      "treeSHA": "fbee557ed8afc34275c480011258332abb3bcea7"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Toolbar",
+      "treeSHA": "4b42b241278d13b537b3baaf1fa18e1384875169"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Tooltip",
+      "treeSHA": "5d7db263dde60499263ace1f4529367902d2070f"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/TopNav",
+      "treeSHA": "009a91d99960ffaf3a90a3072da4ab7ecb800844"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/TreeList",
+      "treeSHA": "e7ca2b362416331065f4f1601b17ec8dd32970d8"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/Typeahead",
+      "treeSHA": "942ec1202a68264d17261833b620daddd8fafe2d"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/utils",
+      "treeSHA": "c41520a98f392ccccf37b8bae574ce78cee51c19"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/virtualization",
+      "treeSHA": "48857534547861e4df923f6dcc2cf8114ec2ec03"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/VisuallyHidden",
+      "treeSHA": "7c85032064b2e888e740e04342ccceaf1e9b9df3"
+    },
+    {
+      "kind": "core",
+      "sourcePath": "packages/core/src/VStack",
+      "treeSHA": "a93536df6a70155a7ab13165abf70de857bc55c1"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/ai-chat",
+      "treeSHA": "892d45087501c4be5094d990e8b69c63a70830a7"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/ai-chat-landing",
+      "treeSHA": "8f8c1fe2628f3f94fe2ea6ff70c246649ca44bed"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/blank",
+      "treeSHA": "95d5775d3b6fed915bd0261d8229a0a8a69915c6"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/canvas-editor",
+      "treeSHA": "223636985482b1da00c68abd2a5260d0b94cf1fe"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/centered-hero",
+      "treeSHA": "d00ac35387d7e49e699ee2ca9c02ba26c30e8a77"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/checkout-wizard",
+      "treeSHA": "2e105b47fafde0f26091ed81bf71ca5d43d499e3"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/classic-gallery",
+      "treeSHA": "a4b55511708249e75f21037063d769a0081242d1"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/contact-form",
+      "treeSHA": "445d02847633473a9b1b84ec6071bee1a0e8108d"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/course-detail",
+      "treeSHA": "2738e75dcca66ef877933348322b0d280a72b153"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/dashboard",
+      "treeSHA": "3e3da744fd7735bc5e984beadb6b170b684752ed"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/dashboard-alert-rail",
+      "treeSHA": "ed97d9fe67d65ee848d0d512bc83d28fcfc34df9"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/dashboard-cohort-funnel",
+      "treeSHA": "fc50130f7929264ecc4c0d7a1944f0913d5dc9be"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/dashboard-comparison",
+      "treeSHA": "47cae8035950af87963c54059e452637b6ac2b8c"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/dashboard-composition",
+      "treeSHA": "9ba3f10ea61e3a184e8dd888f71a7b91d8682399"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/dashboard-progress",
+      "treeSHA": "34fc43d51db0da7bd5cb2f634a7d2b9df1b3d767"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/dashboard-scorecard",
+      "treeSHA": "49508f0a76e38f8485d765139b48f180f2cfa1b7"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/detail-page",
+      "treeSHA": "fec71c52f53ae0f773fe768d9bbe08b40f7a75a9"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/documentation",
+      "treeSHA": "5f670df2b8f7fa7379550d94be095a413b33d236"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/documentation-design",
+      "treeSHA": "15de77b9f09f1e8989917973ac521bb3d0eb7c5f"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/documentation-technical",
+      "treeSHA": "12a98fc049497cffe10076c6fbc2d133a177eefb"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/editor",
+      "treeSHA": "fc6eb348e0f492c360a9f744c1a07617bf1aed8b"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/file-explorer",
+      "treeSHA": "c9b516dd9e78a2ada7a967dbf5f1674e3dc21d91"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/form-two-column",
+      "treeSHA": "58f4a258bc91bbaf345ec24c23bfedf3f8c58e0a"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/form-wizard",
+      "treeSHA": "70dca5bcd58cf7994c22564e005eb39a0d59983a"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/form-wizard-dialog",
+      "treeSHA": "d7a030d7d4a96e5707b0b70f2bdd94b04c2cf395"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/form-wizard-inline",
+      "treeSHA": "055b1aedba37e0e5d7e9cba5f5bc9557b657e5fd"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/form-wizard-vertical",
+      "treeSHA": "79849a484238fbf296628f54a316748703f2f961"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/gallery-hero",
+      "treeSHA": "6a7ec9164dce3cf59b326e9cd21a21c26df92311"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/ide",
+      "treeSHA": "00d223fbd3ae111e28171437f95e8b4a10b3effe"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/incident-console",
+      "treeSHA": "68c8a7a9a68cd639c84e9a88d17e0b4a51e968ff"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/kanban-board",
+      "treeSHA": "24130a7e14a62dc511a67a0a53bd2443c557e452"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/library",
+      "treeSHA": "c96925cf03588d7664deec7d5dc71fef68ffe144"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/login",
+      "treeSHA": "b701476252a3c82bf07bf002c3ed269d3bea95c4"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/login-card",
+      "treeSHA": "00144ebf913a07e364b40f8296b88ecf407c3fe0"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/login-split",
+      "treeSHA": "0bd2880a31b0d17b0fb22e3799d816d17d784a9c"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/login-sso",
+      "treeSHA": "2b47b8e3d6d3db4f764873d57afa9f0e4508595b"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/messaging-shell",
+      "treeSHA": "17a0991ef525a80eb66d94758754a4d2c7d207c2"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/mixed-gallery",
+      "treeSHA": "34ff2a4d4ddf76b45162fcdb4e1614f37598aae4"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/payment-form",
+      "treeSHA": "b6ea14b1f857ec555351db5d172496a627afca79"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/product-detail",
+      "treeSHA": "22017451907b41c100ff7c4c3bfa843041a3bde9"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/product-gallery",
+      "treeSHA": "83c8123670d6b23fa5ee83d582f8ead6e74804f0"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/settings",
+      "treeSHA": "9abb278a3a31539021c1f71d1804e9db6c44d1d7"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/settings-dialog",
+      "treeSHA": "df8a6c020ecc0ef41ce19abe5c0f8b22d814d8fd"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/settings-sidebar",
+      "treeSHA": "08b676250fe4c6b8fcf48fa0d1d49acf98eeb2be"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/shell-nav",
+      "treeSHA": "1fd0086a613316e12732e53916ac08abcb7add4a"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/shell-side-nav",
+      "treeSHA": "f14e224e270585fa5da0106dc4d2e3b025e8c0d1"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/shell-top-nav",
+      "treeSHA": "cc6a782ef652eecff091d0b8c692d218902f53df"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/side-gallery",
+      "treeSHA": "8796e29c5e40158b4c4f7c682318d92fa5079e99"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table",
+      "treeSHA": "0b14d0ea774d81c5b40851f465651cc12f18419d"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table-collapsible",
+      "treeSHA": "59388491de90085e931c4e636cdb4b20a773be75"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table-comparison",
+      "treeSHA": "55dd23c2f8a21dfcf505ffbef42da303b389a7bc"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table-filter",
+      "treeSHA": "435507e81dd7e2729a7c3d311d0895fb7b4fd0ac"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table-grouped",
+      "treeSHA": "9879ece0694bbc71958c4785cb1f6b9c20ead88f"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table-inbox",
+      "treeSHA": "bb31116dec2207c3f5110261ec435828635d182f"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table-page",
+      "treeSHA": "ec762a28693cd4039912245ed27633a09dafee27"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/table-tree",
+      "treeSHA": "6233a4a993509370fcbf66aae59554262e611d32"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/theme-showcase",
+      "treeSHA": "ed484acca0ff5ba00b8b959a3893e44caae582d0"
+    },
+    {
+      "kind": "page",
+      "sourcePath": "packages/cli/assets/templates/pages/work-item-detail",
+      "treeSHA": "2a5ce67f33f50825752a6f5183da0c802397bbbb"
+    }
+  ]
+}

@@ -8,25 +8,107 @@ import (
 	"strings"
 	"testing"
 
+	"github.com/amzkang/mygo-astryx/ds"
 	"github.com/amzkang/mygo-astryx/registry"
 )
 
 func TestInitIdempotency(t *testing.T) {
-	tmp := t.TempDir()
-	if err := cmdInit([]string{"--dir", tmp, "--target", "both"}); err != nil {
-		t.Fatalf("first init failed: %v", err)
+	for _, target := range []string{"agents", "claude", "both"} {
+		t.Run(target, func(t *testing.T) {
+			tmp := t.TempDir()
+			original := "# Project rules\n\nKeep this prefix.\n" + managedBegin + "\nOld managed instructions.\n" + managedEnd + "\nKeep this suffix.\n"
+			for _, name := range []string{"AGENTS.md", "CLAUDE.md"} {
+				if err := os.WriteFile(filepath.Join(tmp, name), []byte(original), 0o644); err != nil {
+					t.Fatal(err)
+				}
+			}
+			for range 2 {
+				if err := cmdInit([]string{"--dir", tmp, "--target", target}); err != nil {
+					t.Fatalf("init failed: %v", err)
+				}
+			}
+			for _, name := range []string{"AGENTS.md", "CLAUDE.md"} {
+				b, err := os.ReadFile(filepath.Join(tmp, name))
+				if err != nil {
+					t.Fatal(err)
+				}
+				body := string(b)
+				selected := target == "both" || target == "agents" && name == "AGENTS.md" || target == "claude" && name == "CLAUDE.md"
+				if !selected {
+					if body != original {
+						t.Fatalf("init changed unselected file %s", name)
+					}
+					continue
+				}
+				if strings.Count(body, managedBegin) != 1 || strings.Count(body, managedEnd) != 1 {
+					t.Fatalf("%s expected exactly one managed block", name)
+				}
+				if !strings.HasPrefix(body, "# Project rules\n\nKeep this prefix.\n") || !strings.HasSuffix(body, "\nKeep this suffix.\n") || strings.Contains(body, "Old managed instructions.") {
+					t.Fatalf("%s did not preserve user content and replace managed instructions", name)
+				}
+				for _, want := range []string{"go build ./...", "go vet ./...", "go tool mygo vet .", "go test -count=1 ./...", "Window.Update", "Window.Invalidate", "c.Key(...)"} {
+					if !strings.Contains(body, want) {
+						t.Errorf("%s missing generated instruction %q", name, want)
+					}
+				}
+			}
+		})
 	}
-	if err := cmdInit([]string{"--dir", tmp, "--target", "both"}); err != nil {
-		t.Fatalf("second init failed: %v", err)
-	}
-	for _, name := range []string{"AGENTS.md", "CLAUDE.md"} {
-		b, err := os.ReadFile(filepath.Join(tmp, name))
-		if err != nil {
-			t.Fatal(err)
-		}
-		if count := strings.Count(string(b), managedBegin); count != 1 {
-			t.Fatalf("%s expected 1 managed block, got %d", name, count)
-		}
+}
+
+func TestInitVerificationUsesTargetProject(t *testing.T) {
+	for _, tc := range []struct {
+		name  string
+		files map[string]os.FileMode
+		want  string
+	}{
+		{"plain", nil, "go build ./... && go vet ./... && go tool mygo vet . && go test -count=1 ./..."},
+		{"wrapper", map[string]os.FileMode{"bin/go": 0o755}, "./bin/go build ./... && ./bin/go vet ./... && ./bin/go tool mygo vet . && ./bin/go test -count=1 ./..."},
+		{"non-executable wrapper", map[string]os.FileMode{"bin/go": 0o644}, "go build ./... && go vet ./... && go tool mygo vet . && go test -count=1 ./..."},
+		{"non-executable script", map[string]os.FileMode{"scripts/verify.sh": 0o644}, "bash ./scripts/verify.sh"},
+		{"script", map[string]os.FileMode{"bin/go": 0o755, "scripts/verify.sh": 0o755}, "./scripts/verify.sh"},
+	} {
+		t.Run(tc.name, func(t *testing.T) {
+			tmp := t.TempDir()
+			for name, mode := range tc.files {
+				path := filepath.Join(tmp, name)
+				if err := os.MkdirAll(filepath.Dir(path), 0o755); err != nil {
+					t.Fatal(err)
+				}
+				if err := os.WriteFile(path, []byte("#!/bin/sh\n"), mode); err != nil {
+					t.Fatal(err)
+				}
+				info, err := os.Stat(path)
+				if err != nil {
+					t.Fatal(err)
+				}
+				if mode&0o111 != 0 && info.Mode()&0o111 == 0 {
+					t.Skip("filesystem does not preserve executable permission bits")
+				}
+			}
+			// Re-initializing a fresh project must produce byte-identical instructions.
+			var first []byte
+			for range 2 {
+				if err := cmdInit([]string{"--dir", tmp, "--target", "both", "--mcp=false"}); err != nil {
+					t.Fatal(err)
+				}
+				for _, name := range []string{"AGENTS.md", "CLAUDE.md"} {
+					body, err := os.ReadFile(filepath.Join(tmp, name))
+					if err != nil {
+						t.Fatal(err)
+					}
+					if !strings.Contains(string(body), "`"+tc.want+"`") {
+						t.Fatalf("%s missing target verification %q", name, tc.want)
+					}
+					if first == nil {
+						first = body
+					}
+					if string(body) != string(first) {
+						t.Fatalf("%s generated instructions differ between files or runs", name)
+					}
+				}
+			}
+		})
 	}
 }
 
@@ -35,20 +117,19 @@ func TestSwizzleCompilesAndPassesMyGoVet(t *testing.T) {
 	if err != nil {
 		t.Fatal(err)
 	}
-	tmp := t.TempDir()
-	ejectedDir := filepath.Join(tmp, "localds")
-
-	// Swizzle a complex component with transitive helpers (ModalCard -> options.go, button.go, layout.go, overlay.go)
-	written, err := SwizzleComponent("ModalCard", ejectedDir, "localds")
-	if err != nil {
-		t.Fatalf("SwizzleComponent failed: %v", err)
+	selections := []string{"--all"}
+	for _, component := range registry.Components {
+		selections = append(selections, component.Name)
 	}
-	if len(written) < 4 {
-		t.Fatalf("expected >=4 swizzled files, got %v", written)
-	}
+	for _, selection := range selections {
+		t.Run(selection, func(t *testing.T) {
+			tmp := t.TempDir()
+			ejectedDir := filepath.Join(tmp, "localds")
+			if err := cmdSwizzle([]string{selection, "--out", ejectedDir, "--pkg", "localds"}); err != nil {
+				t.Fatalf("swizzle failed: %v", err)
+			}
 
-	// Verify go.mod pointing to local mygo-astryx module compiles and passes mygo vet
-	goMod := `module example.com/swizzledapp
+			goMod := `module example.com/swizzledapp
 
 go 1.27.3
 
@@ -58,11 +139,22 @@ require (
 )
 
 replace github.com/amzkang/mygo-astryx => ` + repoRoot + `
+
+tool github.com/egoist/mygo/cmd/mygo
 `
-	if err := os.WriteFile(filepath.Join(tmp, "go.mod"), []byte(goMod), 0o644); err != nil {
-		t.Fatal(err)
-	}
-	mainGo := `package main
+			if err := os.WriteFile(filepath.Join(tmp, "go.mod"), []byte(goMod), 0o644); err != nil {
+				t.Fatal(err)
+			}
+			symbol := selection
+			if selection == "--all" {
+				symbol = "ModalCard"
+			}
+			if selection == "Radio" || selection == "Select" {
+				symbol += "[string]"
+			}
+			mainGo := "package main\n\nimport \"example.com/swizzledapp/localds\"\n\nfunc main() { _ = localds." + symbol + " }\n"
+			if selection == "ModalCard" {
+				mainGo = `package main
 
 import (
 	"example.com/swizzledapp/localds"
@@ -71,37 +163,82 @@ import (
 )
 
 func main() {
-	_ = ui.Render(func(c *ui.Context) {
-		open := true
+	open := true
+	img := ui.Render(func(c *ui.Context) {
 		theme.WithTheme(c, theme.Matcha.Light, func() {
 			localds.ModalCard(c, &open, "Swizzled", 360, func() {
 				localds.PrimaryButton(c, "OK")
 			})
 		})
 	}, 400, 300, 1)
+	if img == nil || img.Bounds().Dx() != 400 || img.Bounds().Dy() != 300 {
+		panic("swizzled ModalCard did not render a frame")
+	}
 }
 `
-	if err := os.WriteFile(filepath.Join(tmp, "main.go"), []byte(mainGo), 0o644); err != nil {
-		t.Fatal(err)
-	}
+			}
 
-	goBin := filepath.Join(repoRoot, "bin", "go")
-	// Generate/update go.sum via mod tidy or reuse repo go.sum
-	repoSum, err := os.ReadFile(filepath.Join(repoRoot, "go.sum"))
-	if err == nil {
-		_ = os.WriteFile(filepath.Join(tmp, "go.sum"), repoSum, 0o644)
-	}
+			if selection == "AppShell" {
+				mainGo = `package main
 
-	for _, cmdArgs := range [][]string{
-		{"build", "-mod=mod", "./..."},
-		{"vet", "-mod=mod", "./..."},
-	} {
-		cmd := exec.Command(goBin, cmdArgs...)
-		cmd.Dir = tmp
-		out, err := cmd.CombinedOutput()
-		if err != nil {
-			t.Fatalf("go %v failed in swizzled temp module: %v\n%s", cmdArgs, err, string(out))
-		}
+import (
+    "example.com/swizzledapp/localds"
+    "github.com/egoist/mygo/ui"
+    "github.com/amzkang/mygo-astryx/theme"
+)
+
+func main() {
+    for _, width := range []int{600, 1000} {
+        var state localds.AppShellState
+        img := ui.Render(func(c *ui.Context) {
+            theme.WithTheme(c, theme.Matcha.Light, func() {
+                localds.AppShell(c, &state, localds.AppShellSlots{
+                    TopNav: func() { localds.TopNav(c, localds.TopNavSlots{Heading: func() { ui.Text(c, "App") }}) },
+                    SideNav: func() { localds.SideNav(c, &state.Nav, []localds.NavItem{{ID: "home", Label: "Home"}}) },
+                    Content: func() { ui.Text(c, "Content") },
+                })
+            }).Fill()
+        }, width, 400, 1)
+        if img == nil || img.Bounds().Dx() != width || img.Bounds().Dy() != 400 {
+            panic("swizzled AppShell did not render")
+        }
+    }
+}
+`
+			}
+
+			if err := os.WriteFile(filepath.Join(tmp, "main.go"), []byte(mainGo), 0o644); err != nil {
+				t.Fatal(err)
+			}
+			repoSum, err := os.ReadFile(filepath.Join(repoRoot, "go.sum"))
+			if err != nil {
+				t.Fatal(err)
+			}
+			if err := os.WriteFile(filepath.Join(tmp, "go.sum"), repoSum, 0o644); err != nil {
+				t.Fatal(err)
+			}
+
+			goBin := filepath.Join(repoRoot, "bin", "go")
+			for _, cmdArgs := range [][]string{
+				{"build", "-mod=mod", "./..."},
+				{"vet", "-mod=mod", "./..."},
+				{"tool", "mygo", "vet", "."},
+			} {
+				cmd := exec.Command(goBin, cmdArgs...)
+				cmd.Dir = tmp
+				out, err := cmd.CombinedOutput()
+				if err != nil {
+					t.Fatalf("go %v failed in swizzled temp module: %v\n%s", cmdArgs, err, string(out))
+				}
+			}
+			if selection == "ModalCard" || selection == "AppShell" {
+				cmd := exec.Command(goBin, "run", ".")
+				cmd.Dir = tmp
+				if output, err := cmd.CombinedOutput(); err != nil {
+					t.Fatalf("swizzled render smoke failed: %v\n%s", err, output)
+				}
+			}
+		})
 	}
 }
 
@@ -222,9 +359,16 @@ func TestSwizzleDryRunForceAndAll(t *testing.T) {
 	if err := cmdSwizzle([]string{"--all", "--force", "--out", outDir, "--pkg", "localds"}); err != nil {
 		t.Fatalf("cmdSwizzle --all --force failed: %v", err)
 	}
-	for _, expected := range []string{"button.go", "form.go", "layout.go", "menu.go", "data.go", "options.go"} {
-		if _, err := os.Stat(filepath.Join(outDir, expected)); err != nil {
-			t.Fatalf("expected %s after --all swizzle: %v", expected, err)
+	entries, err := ds.SourceFS.ReadDir(".")
+	if err != nil {
+		t.Fatal(err)
+	}
+	for _, entry := range entries {
+		if entry.IsDir() || !strings.HasSuffix(entry.Name(), ".go") || strings.HasSuffix(entry.Name(), "_test.go") {
+			continue
+		}
+		if _, err := os.Stat(filepath.Join(outDir, entry.Name())); err != nil {
+			t.Fatalf("expected %s after --all swizzle: %v", entry.Name(), err)
 		}
 	}
 }
@@ -346,5 +490,3 @@ tool github.com/egoist/mygo/cmd/mygo
 		})
 	}
 }
-
-

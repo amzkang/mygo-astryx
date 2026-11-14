@@ -6,12 +6,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/egoist/mygo"
-	"github.com/egoist/mygo/ui"
 	"github.com/amzkang/mygo-astryx/ds"
 	"github.com/amzkang/mygo-astryx/icons"
 	"github.com/amzkang/mygo-astryx/registry"
 	"github.com/amzkang/mygo-astryx/theme"
+	"github.com/egoist/mygo"
+	"github.com/egoist/mygo/ui"
 )
 
 type galleryPage string
@@ -21,6 +21,7 @@ const (
 	pageComponents galleryPage = "components"
 	pageTokens     galleryPage = "tokens"
 	pageIcons      galleryPage = "icons"
+	pagePatterns   galleryPage = "patterns"
 )
 
 type galleryState struct {
@@ -55,26 +56,32 @@ type galleryState struct {
 	paletteState ds.CommandPaletteState
 
 	// Component Playground & Desktop Showcase state
-	pgVariantIdx int
-	pgSizeIdx    int
-	pgToneIdx    int
-	pgDisabled   bool
-	pgLoading    bool
-	pgDot        bool
-	pgLabel      string
-	pgMenuOpen   bool
-	pgAlertOpen  bool
-	pgCollOpen   bool
-	pgTreeOpen   bool
-	pgTreeSel    string
-	pgTableState ui.ListState
-	pgNumVal     float64
-	pgStepVal    float64
-	pgRangeLo    float64
-	pgRangeHi    float64
-	pgTokens     []string
-	pgDate       time.Time
-	pgSplit      float32
+	pgVariantIdx  int
+	pgSizeIdx     int
+	pgToneIdx     int
+	pgDisabled    bool
+	pgLoading     bool
+	pgDot         bool
+	pgLabel       string
+	pgMenuOpen    bool
+	pgAlertOpen   bool
+	pgCollOpen    bool
+	pgTreeOpen    bool
+	pgTreeSel     string
+	pgTableState  ui.ListState
+	pgNumVal      float64
+	pgStepVal     float64
+	pgRangeLo     float64
+	pgRangeHi     float64
+	pgTokens      []string
+	pgDate        time.Time
+	pgSplit       float32
+	pattern       string
+	patternShell  ds.AppShellState
+	patternScroll ui.ScrollState
+	patternAction string
+	patternMobile bool
+	lastPattern   string
 
 	// Tokens & WCAG mode (0=active theme swatches, 1=7-theme contrast matrix)
 	tokensTab int
@@ -106,6 +113,7 @@ func newGalleryState() *galleryState {
 		pgTokens:     []string{"native", "wcag"},
 		pgDate:       time.Date(2026, 11, 14, 0, 0, 0, 0, time.UTC),
 		pgSplit:      210,
+		pattern:      "app-shell-basic",
 	}
 }
 
@@ -167,6 +175,8 @@ func renderGallery(c *ui.Context, app *galleryState) {
 							renderTokensPage(c, app, th)
 						case pageIcons:
 							renderIconsPage(c, app, th)
+						case pagePatterns:
+							renderPatternsPage(c, app, th)
 						default:
 							renderOverviewPage(c, app, th)
 						}
@@ -270,6 +280,7 @@ func renderSidebar(c *ui.Context, app *galleryState, th *theme.Theme) {
 		ds.Caption(c, "EXPLORE").Padding(th.Space(1), th.Space(2))
 		navItem(pageOverview, icons.Home, "Overview")
 		navItem(pageComponents, icons.Layers, "Components")
+		navItem(pagePatterns, icons.PanelRight, "Patterns")
 		navItem(pageTokens, icons.Palette, "Tokens & WCAG")
 		navItem(pageIcons, icons.Box, "Icons (56)")
 

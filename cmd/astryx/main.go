@@ -47,6 +47,15 @@ func run(args []string) error {
 		return cmdInit(rest)
 	case "search":
 		return cmdSearch(rest)
+	case "manifest":
+		if len(rest) == 1 && (rest[0] == "-h" || rest[0] == "--help") {
+			fmt.Print("Export the versioned capability manifest as JSON using embedded offline data.\n\nUsage\n  astryx manifest\n")
+			return nil
+		}
+		if len(rest) != 0 {
+			return fmt.Errorf("usage: astryx manifest")
+		}
+		return writeJSON(registry.BuildManifest())
 	case "component":
 		return cmdComponent(rest)
 	case "docs":
@@ -72,6 +81,7 @@ func printUsage() {
 Usage:
   astryx init [--dir .] [--target agents|claude|both] [--mcp=true]
   astryx search <query> [--kind component|token|guide|preset|template|icon] [--json]
+  astryx manifest
   astryx component <name> [--dense] [--json]
   astryx docs [guide] [--json]
   astryx theme [name] [--dark] [--json]
@@ -103,15 +113,29 @@ func cmdInit(args []string) error {
 		return fmt.Errorf("invalid --target %q", *target)
 	}
 
+	goCommand := "go"
+	if info, err := os.Stat(filepath.Join(*dir, "bin", "go")); err == nil && info.Mode().IsRegular() && info.Mode()&0o111 != 0 {
+		goCommand = "./bin/go"
+	}
+	verification := fmt.Sprintf("%s build ./... && %s vet ./... && %s tool mygo vet . && %s test -count=1 ./...", goCommand, goCommand, goCommand, goCommand)
+	if info, err := os.Stat(filepath.Join(*dir, "scripts", "verify.sh")); err == nil && info.Mode().IsRegular() {
+		verification = "bash ./scripts/verify.sh"
+		if info.Mode()&0o111 != 0 {
+			verification = "./scripts/verify.sh"
+		}
+	}
+
 	block := strings.TrimSpace(`
 ` + managedBegin + `
 ## mygo-astryx UI Design System
 
-- **Theme scope**: Wrap your root view in ` + "`theme.WithTheme(c, th, fn)`" + ` and read tokens with ` + "`theme.Of(c)`" + `.
-- **Stock themes**: ` + "`theme.Neutral`, `theme.Matcha`, `theme.Stone`, `theme.Butter`, `theme.Chocolate`, `theme.Gothic`, `theme.Y2K`" + `.
-- **MyGo lifetime rules**: Never store ` + "`ui.Element`" + `, ` + "`*ui.Context`" + `, or ` + "`*Parts`" + ` across frames or send them to goroutines.
-- **Discovery**: Run ` + "`astryx search <query>`" + ` or ` + "`astryx component <Name> --dense`" + ` before building custom widgets.
-- **Verification**: Always run ` + "`go build ./... && go vet ./... && go tool mygo vet .`" + ` after UI edits.
+- **Theme scope**. Wrap your root view in ` + "`theme.WithTheme(c, th, fn)`" + ` and read tokens with ` + "`theme.Of(c)`" + `.
+- **Stock themes**. ` + "`theme.Neutral`, `theme.Matcha`, `theme.Stone`, `theme.Butter`, `theme.Chocolate`, `theme.Gothic`, `theme.Y2K`" + `.
+- **MyGo lifetime rules**. Never store ` + "`ui.Element`" + `, ` + "`*ui.Context`" + `, or ` + "`*Parts`" + ` across frames or send them to goroutines.
+- **UI thread**. Run I/O in goroutines and publish results via ` + "`Window.Update` / `Window.Invalidate`" + `. Keep frame handles on the UI thread.
+- **Stable identity**. Use ` + "`c.Key(...)`" + ` before constructing repeated or dynamic stateful controls.
+- **Discovery**. Run ` + "`astryx search <query>`" + ` or ` + "`astryx component <Name> --dense`" + ` before building custom widgets.
+- **Verification**. After each batch of changes, run ` + "`" + verification + "`" + ` from the project root. Include build, Go vet, MyGo vet, and all tests in the project's verification script.
 ` + managedEnd)
 
 	if err := os.MkdirAll(*dir, 0o755); err != nil {
@@ -489,7 +513,7 @@ func Swizzle(opts SwizzleOptions) ([]SwizzleResult, error) {
 func stripSourceFSEmbed(f *ast.File) {
 	// Remove SourceFS var and "embed" import from options.go when swizzled into user codebases.
 	filtered := f.Decls[:0]
-	usesEmbed := false
+	f.Imports = nil
 	for _, d := range f.Decls {
 		gen, ok := d.(*ast.GenDecl)
 		if ok && gen.Tok == token.VAR {
@@ -506,27 +530,26 @@ func stripSourceFSEmbed(f *ast.File) {
 				continue
 			}
 		}
-		filtered = append(filtered, d)
-	}
-	f.Decls = filtered
-
-	if !usesEmbed {
-		for _, d := range f.Decls {
-			gen, ok := d.(*ast.GenDecl)
-			if !ok || gen.Tok != token.IMPORT {
-				continue
-			}
+		if ok && gen.Tok == token.IMPORT {
 			kept := gen.Specs[:0]
 			for _, s := range gen.Specs {
 				imp, ok := s.(*ast.ImportSpec)
-				if ok && imp.Path != nil && imp.Path.Value == `"embed"` {
+				if ok && imp.Path != nil && strings.Trim(imp.Path.Value, "\"`") == "embed" {
 					continue
 				}
 				kept = append(kept, s)
+				if ok {
+					f.Imports = append(f.Imports, imp)
+				}
 			}
 			gen.Specs = kept
+			if len(gen.Specs) == 0 {
+				continue
+			}
 		}
+		filtered = append(filtered, d)
 	}
+	f.Decls = filtered
 }
 
 func cmdTemplate(args []string) error {
@@ -669,50 +692,69 @@ func findGoBinary(dir string) string {
 }
 
 var statefulLoopControls = map[string]bool{
-	"ui.ButtonBase":      true,
-	"ui.CheckboxBase":    true,
-	"ui.SwitchBase":      true,
-	"ui.RadioBase":       true,
-	"ui.TextInputBase":   true,
-	"ui.TextAreaBase":    true,
-	"ui.Slider":          true,
-	"ui.RangeSlider":     true,
-	"ui.NumberInput":     true,
-	"ui.Stepper":         true,
-	"ui.SelectBase":      true,
-	"ui.ComboboxBase":    true,
-	"ui.CollapsibleBase": true,
-	"ui.MenuBase":        true,
-	"ui.ContextMenuBase": true,
-	"ui.DialogBase":      true,
-	"ui.TabsBase":        true,
-	"ui.AccordionBase":   true,
-	"ui.TreeBase":        true,
-	"ui.ToastBase":       true,
-	"ds.Button":          true,
-	"ds.PrimaryButton":   true,
-	"ds.IconButton":      true,
-	"ds.CopyButton":      true,
-	"ds.Checkbox":        true,
-	"ds.Switch":          true,
-	"ds.Radio":           true,
-	"ds.TextInput":       true,
-	"ds.TextArea":        true,
-	"ds.SearchInput":     true,
-	"ds.Select":          true,
-	"ds.Combobox":        true,
-	"ds.Slider":          true,
-	"ds.RangeSlider":     true,
-	"ds.NumberInput":     true,
-	"ds.Stepper":         true,
-	"ds.TokenField":      true,
-	"ds.DateInput":       true,
-	"ds.DropdownMenu":    true,
-	"ds.Collapsible":     true,
-	"ds.Accordion":       true,
-	"ds.Tabs":            true,
-	"ds.TreeView":        true,
-	"ds.Pagination":      true,
+	"ds.Link":              true,
+	"ui.Link":              true,
+	"ds.SideNav":           true,
+	"ds.MobileNav":         true,
+	"ds.AppShell":          true,
+	"ds.ScrollableArea":    true,
+	"ds.MoreMenu":          true,
+	"ui.ButtonBase":        true,
+	"ui.CheckboxBase":      true,
+	"ui.SwitchBase":        true,
+	"ui.RadioBase":         true,
+	"ui.TextInputBase":     true,
+	"ui.TextAreaBase":      true,
+	"ui.Slider":            true,
+	"ui.RangeSlider":       true,
+	"ui.NumberInput":       true,
+	"ui.Stepper":           true,
+	"ui.SelectBase":        true,
+	"ui.ComboboxBase":      true,
+	"ui.SegmentedBase":     true,
+	"ui.DateInput":         true,
+	"ui.PopoverBase":       true,
+	"ui.TooltipBase":       true,
+	"ui.ToastViewportBase": true,
+	"ui.CollapsibleBase":   true,
+	"ui.MenuBase":          true,
+	"ui.ContextMenuBase":   true,
+	"ui.DialogBase":        true,
+	"ui.TabsBase":          true,
+	"ui.AccordionBase":     true,
+	"ui.TreeBase":          true,
+	"ui.ToastBase":         true,
+	"ds.Button":            true,
+	"ds.PrimaryButton":     true,
+	"ds.IconButton":        true,
+	"ds.CopyButton":        true,
+	"ds.Checkbox":          true,
+	"ds.Switch":            true,
+	"ds.Radio":             true,
+	"ds.SegmentedControl":  true,
+	"ds.TextInput":         true,
+	"ds.TextArea":          true,
+	"ds.SearchInput":       true,
+	"ds.Select":            true,
+	"ds.Combobox":          true,
+	"ds.Slider":            true,
+	"ds.RangeSlider":       true,
+	"ds.NumberInput":       true,
+	"ds.Stepper":           true,
+	"ds.TokenField":        true,
+	"ds.DateInput":         true,
+	"ds.DropdownMenu":      true,
+	"ds.Collapsible":       true,
+	"ds.Accordion":         true,
+	"ds.Tabs":              true,
+	"ds.TreeView":          true,
+	"ds.Pagination":        true,
+	"ds.ContextMenu":       true,
+	"ds.ModalCard":         true,
+	"ds.Drawer":            true,
+	"ds.Popover":           true,
+	"ds.Tooltip":           true,
+	"ds.ToastViewport":     true,
 }
 
 // CheckDirectory scans Go files under dir for common mygo-astryx mistakes:

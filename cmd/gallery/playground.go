@@ -4,11 +4,11 @@ import (
 	"fmt"
 	"strings"
 
-	"github.com/egoist/mygo/ui"
 	"github.com/amzkang/mygo-astryx/ds"
 	"github.com/amzkang/mygo-astryx/icons"
 	"github.com/amzkang/mygo-astryx/registry"
 	"github.com/amzkang/mygo-astryx/theme"
+	"github.com/egoist/mygo/ui"
 )
 
 func playgroundVariant(idx int) (ds.Variant, string) {
@@ -223,6 +223,8 @@ func renderComponentPlayground(c *ui.Context, app *galleryState, th *theme.Theme
 
 func renderPlaygroundWidget(c *ui.Context, app *galleryState, th *theme.Theme, comp registry.ComponentDoc, label string, variant ds.Variant, size ds.Size, tone ds.Tone) {
 	switch comp.Name {
+	case "Layout", "TopNav", "SideNav", "MobileNav", "AppShell", "ScrollableArea", "MoreMenu", "Grid", "AspectRatio", "Link":
+		renderP1aWidget(c, app, th, comp.Name)
 	case "Button":
 		if ds.Button(c, label, ds.ButtonOpts{
 			Variant:     variant,
@@ -422,7 +424,7 @@ func renderDesktopControlsShowcase(c *ui.Context, app *galleryState, th *theme.T
 					Icon:  icons.Layers,
 					Open:  &app.pgTreeOpen,
 					Children: []ds.TreeNode{
-						{ID: "ds", Label: "ds (61)", Icon: icons.Box},
+						{ID: "ds", Label: fmt.Sprintf("ds (%d)", len(registry.Components)), Icon: icons.Box},
 						{ID: "theme", Label: "theme (7)", Icon: icons.Palette},
 						{ID: "icons", Label: "icons (56)", Icon: icons.Sparkles},
 					},
