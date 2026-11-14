@@ -174,8 +174,9 @@ func assertNonBlankImage(t *testing.T, img *image.RGBA, w, h int, label string) 
 	}
 	first := img.RGBAAt(0, 0)
 	varied := false
-	for y := 0; y < h; y += 16 {
-		for x := 0; x < w; x += 16 {
+	// Small text may fall between sample points with the runner's fonts.
+	for y := 0; y < h; y++ {
+		for x := 0; x < w; x++ {
 			if img.RGBAAt(x, y) != first {
 				varied = true
 				break
